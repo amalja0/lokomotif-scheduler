@@ -1,5 +1,11 @@
 package com.tujuhsembilan.scheduler.controller;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.RepresentationModel;
@@ -34,10 +40,19 @@ public class LokomotifController {
 
     @GetMapping("/create-data-lokomotif")
     public ResponseEntity<?> createLokomotifData() {
+        LocalDateTime randomDate =  LocalDateTime.now();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss");
+
+        String formattedDateTime = randomDate.format(formatter);
+
+
         Lokomotif lokomotif = Lokomotif.builder()
+            .kodeLoko(faker.number().digits(5))
             .namaLoko(faker.address().country())
             .dimensiLoko(faker.number().digits(2))
             .status(faker.number().digits(1))
+            .createdDate(formattedDateTime)
             .build();
         
         kafkaProducer.sendMessage(lokomotif);

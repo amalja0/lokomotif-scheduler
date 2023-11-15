@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.tujuhsembilan.scheduler.model.Lokomotif;
 
 @Repository
-public interface LokomotifRepository extends JpaRepository<Lokomotif, Long> {
+public interface LokomotifRepository extends JpaRepository<Lokomotif, String> {
     
 }

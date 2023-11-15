@@ -14,10 +14,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class LokomotifDto {
     
-    private Long kodeLoko;
+    private String kodeLoko;
     private String namaLoko;
     private String dimensiLoko;
     private String status;
-    private LocalDateTime createdDate;
+    private String createdDate;
 
 }
