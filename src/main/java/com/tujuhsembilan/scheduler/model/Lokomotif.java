@@ -1,5 +1,7 @@
 package com.tujuhsembilan.scheduler.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -20,7 +22,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class Lokomotif {
+public class Lokomotif implements Serializable {
     @Id
     private String kodeLoko;
 
